@@ -71,6 +71,8 @@ Route::prefix('admin')->group(function () {
 
         Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/password/settings', [AdminController::class, 'password_settings'])->name('password.settings');
+        Route::post('/password/change', [AdminController::class, 'password_change'])->name('password.change');
         Route::post('/students/status-toggle/{id}', [AdminController::class, 'toggleStatus']);
         Route::delete('/students/delete/{id}', [AdminController::class, 'delete'])->name('student.delete');
         Route::get('/students/edit/{id}', [AdminController::class, 'edit'])->name('admin.students.edit');

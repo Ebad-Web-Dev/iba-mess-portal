@@ -439,7 +439,7 @@
             <!-- User dropdown on the right -->
             <div class="ms-auto d-flex align-items-center">
                 <div class="dropdown">
-                    <a class="user-dropdown dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="user-dropdown dropdown-toggle" style="color: #801f0f" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-avatar">
                             {{ isset($student->name) ?  substr($student->name, 0, 1) : '' }}
                         </div>

@@ -68,6 +68,14 @@
                             <span class="mx-2" style="color: #801f0f">Students Meals</span>
                         </a>
                     </li>
+                    <li class="dropdown {{ request()->routeIs('password.settings') ? 'active' : '' }}" style="color: #0d47a1;">
+                        <a href="{{ route('password.settings') }}" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#801f0f" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                            </svg>
+                            <span class="mx-2" style="color: #801f0f">Change Password</span>
+                        </a>
+                    </li>
                 </ul>
 
 

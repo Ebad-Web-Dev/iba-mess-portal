@@ -324,5 +324,21 @@ public function login(Request $request)
     return view('admin.meals');
 }
 
+    public function password_settings(Request $request){
+        return view('admin.password_reset');
+    }
+    public function password_change(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $admin = Auth::guard('admin')->user();
+        $admin->password = Hash::make($request->password);
+        $admin->save();
+
+        return back()->with('success', 'Password changed successfully!');
+    }
+
 
 }

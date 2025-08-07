@@ -203,7 +203,7 @@
 
                     <!-- Submit Button -->
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" disabled>
+                        <button type="submit" class="btn btn-secondary btn-lg" id="submit-btn" disabled>
                             <i class="fas fa-check-circle me-2"></i> Confirm Selection & Proceed
                         </button>
                     </div>
