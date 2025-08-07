@@ -13,44 +13,43 @@
                     <div class="card-header text-white" style="background-color: #801f0f;">
                         <h3 class="mb-0">Edit Student</h3>
                     </div>
-                    
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.students.update', $student->id) }}">
+                        <form method="POST" action="{{ route('admin.students.update', ['id' => $student_detail->id]) }}">
                             @csrf
-                            <input id="serial_no" type="hidden" class="form-control" name="student_id" value="{{ $student->id }}" required>
+                            <input id="serial_no" type="hidden" class="form-control" name="student_id" value="{{ $student_detail->id }}" required>
 
                             <div class="form-group row">
                                 <label for="room_no" class="col-md-4 col-form-label text-md-right">Room No</label>
                                 <div class="col-md-6">
-                                    <input id="room_no" type="text" class="form-control" name="room_no" value="{{ $student->room_no }}" required>
+                                    <input id="room_no" type="text" class="form-control" name="room_no" value="{{ $student_detail->room_no }}" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ $student->name }}" required>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $student_detail->name }}" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="class" class="col-md-4 col-form-label text-md-right">Class</label>
                                 <div class="col-md-6">
-                                    <input id="class" type="text" class="form-control" name="class" value="{{ $student->class }}" required>
+                                    <input id="class" type="text" class="form-control" name="class" value="{{ $student_detail->class }}" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="batch" class="col-md-4 col-form-label text-md-right">Batch</label>
                                 <div class="col-md-6">
-                                    <input id="batch" type="text" class="form-control" name="batch" value="{{ $student->batch }}" required>
+                                    <input id="batch" type="text" class="form-control" name="batch" value="{{ $student_detail->batch }}" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="erp_id" class="col-md-4 col-form-label text-md-right">ERP ID</label>
                                 <div class="col-md-6">
-                                    <input id="erp_id" type="text" class="form-control" name="erp_id" value="{{ $student->erp_id }}" required>
+                                    <input id="erp_id" type="text" class="form-control" name="erp_id" value="{{ $student_detail->erp_id }}" required>
                                 </div>
                             </div>
 
@@ -58,8 +57,8 @@
                                 <label for="enabled" class="col-md-4 col-form-label text-md-right">Status</label>
                                 <div class="col-md-6">
                                     <select id="enabled" class="form-control" name="enabled" required>
-                                        <option value="1" {{ $student->enabled ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ !$student->enabled ? 'selected' : '' }}>Inactive</option>
+                                        <option value="1" {{ $student_detail->enabled ? 'selected' : '' }}>Active</option>
+                                        <option value="0" {{ !$student_detail->enabled ? 'selected' : '' }}>Inactive</option>
                                     </select>
                                 </div>
                             </div>

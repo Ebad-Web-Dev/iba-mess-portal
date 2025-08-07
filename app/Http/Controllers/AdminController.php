@@ -75,8 +75,8 @@ public function login(Request $request)
 
     public function edit($id)
     {
-        $student = Student::findOrFail($id);
-        return view('admin.edit_student', compact('student'));
+        $student_detail = Student::findOrFail($id);
+        return view('admin.edit_student', compact('student_detail'));
     }
 
    public function update(Request $request, $id)
@@ -92,11 +92,10 @@ public function login(Request $request)
         ]);
 
         try {
-            // Find the student
             $student = Student::findOrFail($id);
-            
-            // Update with validated data (excluding serial_no as in your original)
             $student->update($validatedData);
+            $student['enabled'] = $request->enabled;
+            $student->save();
             
             return redirect()->route('admin.dashboard')
                 ->with('success', 'Student successfully updated');

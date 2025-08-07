@@ -45,84 +45,47 @@
         <table style="width:100%;" class="table2">
             <tr>
                  <td  style="border:none;">
-                    <img src="{{ asset('asset/assets/img/iba70whitebg.png') }}" width="70" alt="IBA" align="left" />
+                    <img src="{{ asset('voucher/iba-logo-voucher.jpg') }}" width="170" alt="IBA" align="left" />
                 </td>
                 <td  style="border:none;">
                     <img src="{{ asset('voucher/meezan-logo-voucher.jpg') }}" width="50" alt="bank" align="right" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align:center; height:50px; vertical-align:top;">
-                    <strong>MEAL PLAN VOUCHER</strong>
-                    <div style="font-size:14px; margin-top:5px;">{{ $voucher_data['month'] }}</div>
+                <td colspan="2" style="text-align:center; height:50px; font-size: 20px; vertical-align:top;">
+                    <strong>Fee Voucher</strong>
                 </td>
+            </tr>
+            <tr>
+                <td style="width:40%; font-weight:bold;">Customer Code:</td>
+                <td style="font-weight:bold;">IBA</td>
             </tr>
             <tr>
                 <td style="width:40%;">Voucher No:</td>
                 <td style="font-weight:bold;">{{ $voucher_data['uid'] }}</td>
             </tr>
             <tr>
-                <td>Student Name:</td>
+                <td>Full Name:</td>
                 <td style="font-weight:bold;">{{ $student->name }}</td>
             </tr>
             <tr>
-                <td>Student ID:</td>
-                <td style="font-weight:bold;">{{ $student->erp_id }}</td>
+                <td>Fee Amount</td>
+                <td style="font-weight:bold;">Rs. {{ number_format($voucher_data['total_amount'], 2) }}</td>
             </tr>
             <tr>
-                <td>Program:</td>
-                <td style="font-weight:bold;">{{ $student->class ?? '-' }}</td>
+                <td>Description</td>
+                <td style="font-weight:bold;">Mess Charges</td>
             </tr>
-            <tr>
-                <td>Semester:</td>
-                <td style="font-weight:bold;">{{ $student->semester ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Valid From:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['start_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Valid Until:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Total Days:</td>
-                <td style="font-weight:bold;">{{ $total_days }}</td>
-            </tr>
-            
-            <!-- Meal Details Header -->
-            <tr>
-                <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:2px solid #000; padding-top:10px;">
-                    SELECTED MEAL PLAN
-                </td>
-            </tr>
-            
-            <!-- Meal Items -->
-            @foreach($selected_meals as $meal)
-            <tr>
-                <td>{{ $meal['name'] }} (per day):</td>
-                <td style="text-align:right; font-weight:bold;">Rs. {{ number_format($meal['price'], 2) }}</td>
-            </tr>
-            @endforeach
-            
-            <!-- Total Row -->
-            <tr>
-                <td style="border-top:2px solid #000; font-weight:bold;">TOTAL AMOUNT:</td>
-                <td style="border-top:2px solid #000; text-align:right; font-weight:bold;">
-                    Rs. {{ number_format($voucher_data['total_amount'], 2) }}
-                </td>
-            </tr>
-            
             <!-- Instructions -->
             <tr>
                 <td colspan="2" style="height:120px; vertical-align:top;border:none; padding-top:10px;">
                     <strong>INSTRUCTIONS:</strong>
                     <ol style="padding-left: 15px; margin-top:5px;">
-                        <li>This voucher must be presented at the cafeteria.</li>
-                        <li>Valid only for the specified dates.</li>
-                        <li>Non-transferable and non-refundable.</li>
-                        <li>Report any issues to cafeteria manager.</li>
-                        <li>Voucher expires on {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee will not be accepted after {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee voucher can only be deposit through cash payment.</li>
+                        <li>Fee paid is non refundable and non transferable.</li>
+                        <li>Only amount specified in the fee voucher is Acceptable at the bank. Altered fee voucher is not acceptable for payment of Fee </li>
+                        <li>For Bank related queries please contact Mr. Noman Ali Khan (0304-0922401)</li>
                     </ol>
                 </td>
             </tr>
@@ -131,17 +94,17 @@
             <tr>
                 <td style="border:none; padding-top:20px;">
                     _________________________<br>
-                    <small>Student Signature</small>
+                    <small>Sign Officer</small>
                 </td>
                 <td style="border:none; text-align:right; padding-top:20px;">
                     _________________________<br>
-                    <small>Cafeteria Officer</small>
+                    <small>Sign Cashier</small>
                 </td>
             </tr>
             
             <!-- Copy Label -->
             <tr>
-                <td colspan="2" class="copy-label">STUDENT COPY</td>
+                <td colspan="2" class="copy-label">Student Copy</td>
             </tr>
         </table>
     </td>
@@ -151,84 +114,47 @@
         <table style="width:100%;" class="table2">
             <tr>
                  <td  style="border:none;">
-                    <img src="{{ asset('asset/assets/img/iba70whitebg.png') }}" width="70" alt="IBA" align="left" />
+                    <img src="{{ asset('voucher/iba-logo-voucher.jpg') }}" width="170" alt="IBA" align="left" />
                 </td>
                 <td  style="border:none;">
                     <img src="{{ asset('voucher/meezan-logo-voucher.jpg') }}" width="50" alt="bank" align="right" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align:center; height:50px; vertical-align:top;">
-                    <strong>MEAL PLAN VOUCHER</strong>
-                    <div style="font-size:14px; margin-top:5px;">{{ $voucher_data['month'] }}</div>
+                <td colspan="2" style="text-align:center; height:50px; font-size: 20px; vertical-align:top;">
+                    <strong>Fee Voucher</strong>
                 </td>
+            </tr>
+            <tr>
+                <td style="width:40%; font-weight:bold;">Customer Code:</td>
+                <td style="font-weight:bold;">IBA</td>
             </tr>
             <tr>
                 <td style="width:40%;">Voucher No:</td>
                 <td style="font-weight:bold;">{{ $voucher_data['uid'] }}</td>
             </tr>
             <tr>
-                <td>Student Name:</td>
+                <td>Full Name:</td>
                 <td style="font-weight:bold;">{{ $student->name }}</td>
             </tr>
             <tr>
-                <td>Student ID:</td>
-                <td style="font-weight:bold;">{{ $student->erp_id }}</td>
+                <td>Fee Amount</td>
+                <td style="font-weight:bold;">Rs. {{ number_format($voucher_data['total_amount'], 2) }}</td>
             </tr>
             <tr>
-                <td>Program:</td>
-                <td style="font-weight:bold;">{{ $student->class ?? '-' }}</td>
+                <td>Description</td>
+                <td style="font-weight:bold;">Mess Charges</td>
             </tr>
-            <tr>
-                <td>Semester:</td>
-                <td style="font-weight:bold;">{{ $student->semester ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Valid From:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['start_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Valid Until:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Total Days:</td>
-                <td style="font-weight:bold;">{{ $total_days }}</td>
-            </tr>
-            
-            <!-- Meal Details Header -->
-            <tr>
-                <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:2px solid #000; padding-top:10px;">
-                    SELECTED MEAL PLAN
-                </td>
-            </tr>
-            
-            <!-- Meal Items -->
-            @foreach($selected_meals as $meal)
-            <tr>
-                <td>{{ $meal['name'] }} (per day):</td>
-                <td style="text-align:right; font-weight:bold;">Rs. {{ number_format($meal['price'], 2) }}</td>
-            </tr>
-            @endforeach
-            
-            <!-- Total Row -->
-            <tr>
-                <td style="border-top:2px solid #000; font-weight:bold;">TOTAL AMOUNT:</td>
-                <td style="border-top:2px solid #000; text-align:right; font-weight:bold;">
-                    Rs. {{ number_format($voucher_data['total_amount'], 2) }}
-                </td>
-            </tr>
-            
             <!-- Instructions -->
             <tr>
                 <td colspan="2" style="height:120px; vertical-align:top;border:none; padding-top:10px;">
                     <strong>INSTRUCTIONS:</strong>
                     <ol style="padding-left: 15px; margin-top:5px;">
-                        <li>This voucher must be presented at the cafeteria.</li>
-                        <li>Valid only for the specified dates.</li>
-                        <li>Non-transferable and non-refundable.</li>
-                        <li>Report any issues to cafeteria manager.</li>
-                        <li>Voucher expires on {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee will not be accepted after {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee voucher can only be deposit through cash payment.</li>
+                        <li>Fee paid is non refundable and non transferable.</li>
+                        <li>Only amount specified in the fee voucher is Acceptable at the bank. Altered fee voucher is not acceptable for payment of Fee </li>
+                        <li>For Bank related queries please contact Mr. Noman Ali Khan (0304-0922401)</li>
                     </ol>
                 </td>
             </tr>
@@ -237,17 +163,17 @@
             <tr>
                 <td style="border:none; padding-top:20px;">
                     _________________________<br>
-                    <small>Student Signature</small>
+                    <small>Sign Officer</small>
                 </td>
                 <td style="border:none; text-align:right; padding-top:20px;">
                     _________________________<br>
-                    <small>Cafeteria Officer</small>
+                    <small>Sign Cashier</small>
                 </td>
             </tr>
             
             <!-- Copy Label -->
             <tr>
-                <td colspan="2" class="copy-label">HOSTEL COPY</td>
+                <td colspan="2" class="copy-label">Hostel Copy</td>
             </tr>
         </table>
     </td>
@@ -257,84 +183,47 @@
         <table style="width:100%;" class="table2">
             <tr>
                  <td  style="border:none;">
-                    <img src="{{ asset('asset/assets/img/iba70whitebg.png') }}" width="70" alt="IBA" align="left" />
+                    <img src="{{ asset('voucher/iba-logo-voucher.jpg') }}" width="170" alt="IBA" align="left" />
                 </td>
                 <td  style="border:none;">
                     <img src="{{ asset('voucher/meezan-logo-voucher.jpg') }}" width="50" alt="bank" align="right" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align:center; height:50px; vertical-align:top;">
-                    <strong>MEAL PLAN VOUCHER</strong>
-                    <div style="font-size:14px; margin-top:5px;">{{ $voucher_data['month'] }}</div>
+                <td colspan="2" style="text-align:center; height:50px; font-size: 20px; vertical-align:top;">
+                    <strong>Fee Voucher</strong>
                 </td>
+            </tr>
+            <tr>
+                <td style="width:40%; font-weight:bold;">Customer Code:</td>
+                <td style="font-weight:bold;">IBA</td>
             </tr>
             <tr>
                 <td style="width:40%;">Voucher No:</td>
                 <td style="font-weight:bold;">{{ $voucher_data['uid'] }}</td>
             </tr>
             <tr>
-                <td>Student Name:</td>
+                <td>Full Name:</td>
                 <td style="font-weight:bold;">{{ $student->name }}</td>
             </tr>
             <tr>
-                <td>Student ID:</td>
-                <td style="font-weight:bold;">{{ $student->erp_id }}</td>
+                <td>Fee Amount</td>
+                <td style="font-weight:bold;">Rs. {{ number_format($voucher_data['total_amount'], 2) }}</td>
             </tr>
             <tr>
-                <td>Program:</td>
-                <td style="font-weight:bold;">{{ $student->class ?? '-' }}</td>
+                <td>Description</td>
+                <td style="font-weight:bold;">Mess Charges</td>
             </tr>
-            <tr>
-                <td>Semester:</td>
-                <td style="font-weight:bold;">{{ $student->semester ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Valid From:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['start_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Valid Until:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Total Days:</td>
-                <td style="font-weight:bold;">{{ $total_days }}</td>
-            </tr>
-            
-            <!-- Meal Details Header -->
-            <tr>
-                <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:2px solid #000; padding-top:10px;">
-                    SELECTED MEAL PLAN
-                </td>
-            </tr>
-            
-            <!-- Meal Items -->
-            @foreach($selected_meals as $meal)
-            <tr>
-                <td>{{ $meal['name'] }} (per day):</td>
-                <td style="text-align:right; font-weight:bold;">Rs. {{ number_format($meal['price'], 2) }}</td>
-            </tr>
-            @endforeach
-            
-            <!-- Total Row -->
-            <tr>
-                <td style="border-top:2px solid #000; font-weight:bold;">TOTAL AMOUNT:</td>
-                <td style="border-top:2px solid #000; text-align:right; font-weight:bold;">
-                    Rs. {{ number_format($voucher_data['total_amount'], 2) }}
-                </td>
-            </tr>
-            
             <!-- Instructions -->
             <tr>
                 <td colspan="2" style="height:120px; vertical-align:top;border:none; padding-top:10px;">
                     <strong>INSTRUCTIONS:</strong>
                     <ol style="padding-left: 15px; margin-top:5px;">
-                        <li>This voucher must be presented at the cafeteria.</li>
-                        <li>Valid only for the specified dates.</li>
-                        <li>Non-transferable and non-refundable.</li>
-                        <li>Report any issues to cafeteria manager.</li>
-                        <li>Voucher expires on {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee will not be accepted after {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee voucher can only be deposit through cash payment.</li>
+                        <li>Fee paid is non refundable and non transferable.</li>
+                        <li>Only amount specified in the fee voucher is Acceptable at the bank. Altered fee voucher is not acceptable for payment of Fee </li>
+                        <li>For Bank related queries please contact Mr. Noman Ali Khan (0304-0922401)</li>
                     </ol>
                 </td>
             </tr>
@@ -343,17 +232,17 @@
             <tr>
                 <td style="border:none; padding-top:20px;">
                     _________________________<br>
-                    <small>Student Signature</small>
+                    <small>Sign Officer</small>
                 </td>
                 <td style="border:none; text-align:right; padding-top:20px;">
                     _________________________<br>
-                    <small>Cafeteria Officer</small>
+                    <small>Sign Cashier</small>
                 </td>
             </tr>
             
             <!-- Copy Label -->
             <tr>
-                <td colspan="2" class="copy-label">BANK COPY</td>
+                <td colspan="2" class="copy-label">Bank Copy</td>
             </tr>
         </table>
     </td>
@@ -362,85 +251,48 @@
     <td class="voucher-copy">
         <table style="width:100%;" class="table2">
             <tr>
-                <td  style="border:none;">
-                    <img src="{{ asset('asset/assets/img/iba70whitebg.png') }}" width="70" alt="IBA" align="left" />
+                 <td  style="border:none;">
+                    <img src="{{ asset('voucher/iba-logo-voucher.jpg') }}" width="170" alt="IBA" align="left" />
                 </td>
                 <td  style="border:none;">
                     <img src="{{ asset('voucher/meezan-logo-voucher.jpg') }}" width="50" alt="bank" align="right" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align:center; height:50px; vertical-align:top;">
-                    <strong>MEAL PLAN VOUCHER</strong>
-                    <div style="font-size:14px; margin-top:5px;">{{ $voucher_data['month'] }}</div>
+                <td colspan="2" style="text-align:center; height:50px; font-size: 20px; vertical-align:top;">
+                    <strong>Fee Voucher</strong>
                 </td>
+            </tr>
+            <tr>
+                <td style="width:40%; font-weight:bold;">Customer Code:</td>
+                <td style="font-weight:bold;">IBA</td>
             </tr>
             <tr>
                 <td style="width:40%;">Voucher No:</td>
                 <td style="font-weight:bold;">{{ $voucher_data['uid'] }}</td>
             </tr>
             <tr>
-                <td>Student Name:</td>
+                <td>Full Name:</td>
                 <td style="font-weight:bold;">{{ $student->name }}</td>
             </tr>
             <tr>
-                <td>Student ID:</td>
-                <td style="font-weight:bold;">{{ $student->erp_id }}</td>
+                <td>Fee Amount</td>
+                <td style="font-weight:bold;">Rs. {{ number_format($voucher_data['total_amount'], 2) }}</td>
             </tr>
             <tr>
-                <td>Program:</td>
-                <td style="font-weight:bold;">{{ $student->class ?? '-' }}</td>
+                <td>Description</td>
+                <td style="font-weight:bold;">Mess Charges</td>
             </tr>
-            <tr>
-                <td>Semester:</td>
-                <td style="font-weight:bold;">{{ $student->semester ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Valid From:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['start_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Valid Until:</td>
-                <td style="font-weight:bold;">{{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}</td>
-            </tr>
-            <tr>
-                <td>Total Days:</td>
-                <td style="font-weight:bold;">{{ $total_days }}</td>
-            </tr>
-            
-            <!-- Meal Details Header -->
-            <tr>
-                <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:2px solid #000; padding-top:10px;">
-                    SELECTED MEAL PLAN
-                </td>
-            </tr>
-            
-            <!-- Meal Items -->
-            @foreach($selected_meals as $meal)
-            <tr>
-                <td>{{ $meal['name'] }} (per day):</td>
-                <td style="text-align:right; font-weight:bold;">Rs. {{ number_format($meal['price'], 2) }}</td>
-            </tr>
-            @endforeach
-            
-            <!-- Total Row -->
-            <tr>
-                <td style="border-top:2px solid #000; font-weight:bold;">TOTAL AMOUNT:</td>
-                <td style="border-top:2px solid #000; text-align:right; font-weight:bold;">
-                    Rs. {{ number_format($voucher_data['total_amount'], 2) }}
-                </td>
-            </tr>
-            
             <!-- Instructions -->
             <tr>
                 <td colspan="2" style="height:120px; vertical-align:top;border:none; padding-top:10px;">
                     <strong>INSTRUCTIONS:</strong>
                     <ol style="padding-left: 15px; margin-top:5px;">
-                        <li>This voucher must be presented at the cafeteria.</li>
-                        <li>Valid only for the specified dates.</li>
-                        <li>Non-transferable and non-refundable.</li>
-                        <li>Report any issues to cafeteria manager.</li>
-                        <li>Voucher expires on {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee will not be accepted after {{ \Carbon\Carbon::parse($voucher_data['end_date'])->format('d-M-Y') }}.</li>
+                        <li>Fee voucher can only be deposit through cash payment.</li>
+                        <li>Fee paid is non refundable and non transferable.</li>
+                        <li>Only amount specified in the fee voucher is Acceptable at the bank. Altered fee voucher is not acceptable for payment of Fee </li>
+                        <li>For Bank related queries please contact Mr. Noman Ali Khan (0304-0922401)</li>
                     </ol>
                 </td>
             </tr>
@@ -449,17 +301,17 @@
             <tr>
                 <td style="border:none; padding-top:20px;">
                     _________________________<br>
-                    <small>Student Signature</small>
+                    <small>Sign Officer</small>
                 </td>
                 <td style="border:none; text-align:right; padding-top:20px;">
                     _________________________<br>
-                    <small>Cafeteria Officer</small>
+                    <small>Sign Cashier</small>
                 </td>
             </tr>
             
             <!-- Copy Label -->
             <tr>
-                <td colspan="2" class="copy-label">FINANCE COPY</td>
+                <td colspan="2" class="copy-label">Finance Copy</td>
             </tr>
         </table>
     </td>

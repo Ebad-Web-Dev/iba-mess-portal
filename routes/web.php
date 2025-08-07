@@ -24,12 +24,12 @@ use Illuminate\Support\Facades\Log;
 // });
 
 // Route::middleware(['auth', 'verified'])->group(function() {
-    Route::prefix('admin')->group(function() {
-        Route::get('/students/import', [StudentImportController::class, 'showImportForm'])
-            ->name('students.import');
-        Route::post('/students/import', [StudentImportController::class, 'import'])
-            ->name('students.import.submit');
-    });
+    // Route::prefix('admin')->group(function() {
+    //     Route::get('/students/import', [StudentImportController::class, 'showImportForm'])
+    //         ->name('students.import');
+    //     Route::post('/students/import', [StudentImportController::class, 'import'])
+    //         ->name('students.import.submit');
+    // });
 // });
 
 // routes/web.php
@@ -46,10 +46,10 @@ use Illuminate\Support\Facades\Log;
 
 
 // Authentication routes
-Route::prefix('student')->group(function () {
-    Route::get('/login', [StudentController::class, 'showLoginForm'])->name('student.login.form');
+// Route::prefix('student')->group(function () {
+    Route::get('/', [StudentController::class, 'showLoginForm'])->name('student.login.form');
     Route::post('/login', [StudentController::class, 'login'])->name('student.login');
-});
+// });
 
 // Protected student routes
 Route::middleware(['student.auth'])->prefix('student')->group(function () {
