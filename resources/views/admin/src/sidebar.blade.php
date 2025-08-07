@@ -1,3 +1,30 @@
+  <style>
+    .active-link {
+        position: relative;
+        text-decoration: none;
+    }
+    
+    .active-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #801f0f;
+        animation: underline 0.3s ease;
+    }
+    
+    @keyframes underline {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    
+    .active-link svg, .active-link span {
+        color: #801f0f !important;
+        font-weight: bold;
+    }
+</style>
   <div class="main-sidebar sidebar-style-3">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
@@ -8,21 +35,41 @@
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Welcome {{ Auth::guard('admin')->user()->username }}</li>
-                    <li class="dropdown active" style="color: #0d47a1;">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                        <svg fill="#801f0f" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#0d47a1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M833.935 1063.327c28.913 170.315 64.038 348.198 83.464 384.79 27.557 51.84 92.047 71.944 144 44.387 51.84-27.558 71.717-92.273 44.16-144.113-19.426-36.593-146.937-165.46-271.624-285.064Zm-43.821-196.405c61.553 56.923 370.899 344.81 415.285 428.612 56.696 106.842 15.811 239.887-91.144 296.697-32.64 17.28-67.765 25.411-102.325 25.411-78.72 0-154.955-42.353-194.371-116.555-44.386-83.802-109.102-501.346-121.638-584.245-3.501-23.717 8.245-47.21 29.365-58.277 21.346-11.294 47.096-8.02 64.828 8.357ZM960.045 281.99c529.355 0 960 430.757 960 960 0 77.139-8.922 153.148-26.654 225.882l-10.39 43.144h-524.386v-112.942h434.258c9.487-50.71 14.231-103.115 14.231-156.084 0-467.125-380.047-847.06-847.059-847.06-467.125 0-847.059 379.935-847.059 847.06 0 52.97 4.744 105.374 14.118 156.084h487.454v112.942H36.977l-10.39-43.144C8.966 1395.137.044 1319.128.044 1241.99c0-529.243 430.645-960 960-960Zm542.547 390.686 79.85 79.85-112.716 112.715-79.85-79.85 112.716-112.715Zm-1085.184 0L530.123 785.39l-79.85 79.85L337.56 752.524l79.849-79.85Zm599.063-201.363v159.473H903.529V471.312h112.942Z" fill-rule="evenodd"></path> </g></svg>    
-                        <span class="mx-2" style="color: #801f0f">Dashboard</span></a>
+                    
+                    <!-- Dashboard -->
+                    <li class="dropdown {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" style="color: #0d47a1;">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active-link' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#801f0f" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                            </svg>
+                            <span class="mx-2" style="color: #801f0f">Dashboard</span>
+                        </a>
                     </li>
-                    <li class="dropdown active" style="color: #0d47a1;">
-                        <a href="{{ route('students.import') }}" class="nav-link {{ request()->routeIs('students.import') ? 'active' : '' }}">
-                        <svg fill="#801f0f" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#0d47a1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M833.935 1063.327c28.913 170.315 64.038 348.198 83.464 384.79 27.557 51.84 92.047 71.944 144 44.387 51.84-27.558 71.717-92.273 44.16-144.113-19.426-36.593-146.937-165.46-271.624-285.064Zm-43.821-196.405c61.553 56.923 370.899 344.81 415.285 428.612 56.696 106.842 15.811 239.887-91.144 296.697-32.64 17.28-67.765 25.411-102.325 25.411-78.72 0-154.955-42.353-194.371-116.555-44.386-83.802-109.102-501.346-121.638-584.245-3.501-23.717 8.245-47.21 29.365-58.277 21.346-11.294 47.096-8.02 64.828 8.357ZM960.045 281.99c529.355 0 960 430.757 960 960 0 77.139-8.922 153.148-26.654 225.882l-10.39 43.144h-524.386v-112.942h434.258c9.487-50.71 14.231-103.115 14.231-156.084 0-467.125-380.047-847.06-847.059-847.06-467.125 0-847.059 379.935-847.059 847.06 0 52.97 4.744 105.374 14.118 156.084h487.454v112.942H36.977l-10.39-43.144C8.966 1395.137.044 1319.128.044 1241.99c0-529.243 430.645-960 960-960Zm542.547 390.686 79.85 79.85-112.716 112.715-79.85-79.85 112.716-112.715Zm-1085.184 0L530.123 785.39l-79.85 79.85L337.56 752.524l79.849-79.85Zm599.063-201.363v159.473H903.529V471.312h112.942Z" fill-rule="evenodd"></path> </g></svg>    
-                        <span class="mx-2" style="color: #801f0f">Import Students</span></a>
+                    
+                    <!-- Import Students -->
+                    <li class="dropdown {{ request()->routeIs('students.import') ? 'active' : '' }}" style="color: #0d47a1;">
+                        <a href="{{ route('students.import') }}" class="nav-link {{ request()->routeIs('students.import') ? 'active-link' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#801f0f" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                            </svg>
+                            <span class="mx-2" style="color: #801f0f">Import Students</span>
+                        </a>
                     </li>
-                    <li class="dropdown active" style="color: #0d47a1;">
-                        <a href="{{ route('admin.students.meals') }}" class="nav-link {{ request()->routeIs('admin.students.meals') ? 'active' : '' }}">
-                        <svg fill="#801f0f" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#0d47a1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M833.935 1063.327c28.913 170.315 64.038 348.198 83.464 384.79 27.557 51.84 92.047 71.944 144 44.387 51.84-27.558 71.717-92.273 44.16-144.113-19.426-36.593-146.937-165.46-271.624-285.064Zm-43.821-196.405c61.553 56.923 370.899 344.81 415.285 428.612 56.696 106.842 15.811 239.887-91.144 296.697-32.64 17.28-67.765 25.411-102.325 25.411-78.72 0-154.955-42.353-194.371-116.555-44.386-83.802-109.102-501.346-121.638-584.245-3.501-23.717 8.245-47.21 29.365-58.277 21.346-11.294 47.096-8.02 64.828 8.357ZM960.045 281.99c529.355 0 960 430.757 960 960 0 77.139-8.922 153.148-26.654 225.882l-10.39 43.144h-524.386v-112.942h434.258c9.487-50.71 14.231-103.115 14.231-156.084 0-467.125-380.047-847.06-847.059-847.06-467.125 0-847.059 379.935-847.059 847.06 0 52.97 4.744 105.374 14.118 156.084h487.454v112.942H36.977l-10.39-43.144C8.966 1395.137.044 1319.128.044 1241.99c0-529.243 430.645-960 960-960Zm542.547 390.686 79.85 79.85-112.716 112.715-79.85-79.85 112.716-112.715Zm-1085.184 0L530.123 785.39l-79.85 79.85L337.56 752.524l79.849-79.85Zm599.063-201.363v159.473H903.529V471.312h112.942Z" fill-rule="evenodd"></path> </g></svg>    
-                        <span class="mx-2" style="color: #801f0f">Students Meals</span></a>
+                    
+                    <!-- Students Meals -->
+                    <li class="dropdown {{ request()->routeIs('admin.students.meals') ? 'active' : '' }}" style="color: #0d47a1;">
+                        <a href="{{ route('admin.students.meals') }}" class="nav-link {{ request()->routeIs('admin.students.meals') ? 'active-link' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#801f0f" viewBox="0 0 16 16">
+                                <path d="M2 9a2 2 0 0 0 2-2h8a2 2 0 0 0 2 2 2 2 0 0 0 2 2H0a2 2 0 0 0 2-2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM12 9a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2 2 2 0 0 0-2 2h12a2 2 0 0 0-2-2z"/>
+                                <path d="M8 0a5.5 5.5 0 0 0-5.5 5.5.5.5 0 0 0 .5.5H5a1 1 0 0 0 1-1 1 1 0 0 1 2 0 1 1 0 0 0 1 1h1.5a.5.5 0 0 0 .5-.5A5.5 5.5 0 0 0 8 0z"/>
+                            </svg>
+                            <span class="mx-2" style="color: #801f0f">Students Meals</span>
+                        </a>
                     </li>
                 </ul>
+
+
             </aside>
         </div>
